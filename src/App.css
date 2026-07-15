@@ -265,6 +265,20 @@
 .markdown-body img { max-width: 100%; border-radius: 8px; display: block; margin: 12px 0; }
 .markdown-body code { background: var(--code-bg); padding: 2px 6px; border-radius: 6px; }
 .markdown-body pre { background: var(--code-bg); padding: 12px; border-radius: 8px; overflow: auto; }
+
+/* Support HTML blocks like <div align="center"> with width attributes */
+.markdown-body div[align="center"] {
+  text-align: center;
+}
+.markdown-body div[align="center"] img {
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+.markdown-body div[align="center"] img[width*="%"] {
+  /* allow percent widths specified in HTML (e.g., width="80%") */
+  width: auto; /* let inline attribute take precedence */
+}
 .markdown-body ul, .markdown-body ol { margin: 0 0 12px 20px; }
 
 @media (max-width: 900px) {

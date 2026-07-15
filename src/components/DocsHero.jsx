@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
+import rehypeRaw from 'rehype-raw'
 import '../App.css'
 
 const docs = [
@@ -24,7 +25,11 @@ export default function DocsHero() {
         if (!r.ok) throw new Error('No se pudo cargar')
         return r.text()
       })
-      .then((txt) => setContent(txt))
+      .then((txt) => {
+        // normalize image paths in markdown/html blocks
+        const fixed = txt.replace(/\.\.\/img_huegeo\//g, '/img_huegeo/')
+        setContent(fixed)
+      })
       .catch(() => setContent('No se pudo cargar el documento.'))
   }, [selected])
 
@@ -57,7 +62,17 @@ export default function DocsHero() {
 
         <section className="doc-body">
           <article className="markdown-body">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw]}
+              components={{
+                img: ({ node, ...props }) => (
+                  <img {...props} style={{ maxWidth: '100%', borderRadius: 8 }} />
+                ),
+              }}
+            >
+              {content}
+            </ReactMarkdown>
           </article>
         </section>
       </main>
