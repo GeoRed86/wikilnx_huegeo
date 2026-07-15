@@ -55,9 +55,8 @@ export default function DocsHero() {
         <header className="hero-header">
           <div>
             <h1>{selected.title}</h1>
-            <p>Vista previa del documento y su imagen asociada</p>
+            <p>Vista previa del documento</p>
           </div>
-          <img src={`/img_huegeo/${selected.image}`} alt={selected.title} />
         </header>
 
         <section className="doc-body">
