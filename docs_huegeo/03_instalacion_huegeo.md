@@ -1,7 +1,7 @@
-# Criterio 3.1.2 - Instalación y Configuración Básica
+# Instalación y Configuración Básica
 
 ## 1. Modificación del Hostname (Nombre del Servidor)
-Para identificar de manera única la máquina dentro de la infraestructura, se modificó el hostname del servidor a `srv-wiki` utilizando la herramienta de administración del sistema `hostnamectl`[cite: 2]:
+Para identificar de manera única la máquina dentro de la infraestructura, se modificó el hostname del servidor a `srv-wiki` utilizando la herramienta de administración del sistema `hostnamectl`:
 
 ```bash
 sudo hostnamectl set-hostname srv-wiki
@@ -10,7 +10,7 @@ sudo hostnamectl set-hostname srv-wiki
 ---
 
 ## 2. Direccionamiento IP e Interfaz de Red
-Para comprobar la configuración de red y la dirección IP que el servidor de VirtualBox (en modo NAT) le asignó a la máquina virtual, se utilizó el comando de administración de interfaces[cite: 2]:
+Para comprobar la configuración de red y la dirección IP que el servidor de VirtualBox (en modo NAT) le asignó a la máquina virtual, se utilizó el comando de administración de interfaces:
 
 ```bash
 ip a
