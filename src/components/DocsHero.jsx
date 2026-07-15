@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import '../App.css'
 
 const docs = [
@@ -16,28 +18,27 @@ export default function DocsHero() {
   const [content, setContent] = useState('')
 
   useEffect(() => {
-    const path = `/docs_huegeo/${selected.file}`
+    let path = `/docs_huegeo/${selected.file}`
     fetch(path)
       .then((r) => {
         if (!r.ok) throw new Error('No se pudo cargar')
         return r.text()
       })
-      .then((txt) => {
-        const cleaned = txt.replace(/\r/g, '')
-        const excerpt = cleaned.slice(0, 700)
-        setContent(excerpt + (cleaned.length > 700 ? '…' : ''))
-      })
+      .then((txt) => setContent(txt))
       .catch(() => setContent('No se pudo cargar el documento.'))
   }, [selected])
 
   return (
-    <div className="docs-hero glass-container">
-      <aside className="docs-list glass">
+    <div className="docs-hero">
+      <aside className="docs-list">
         <h3>Secciones</h3>
         <ul>
           {docs.map((d) => (
             <li key={d.id}>
-              <button className={d.id === selected.id ? 'active' : ''} onClick={() => setSelected(d)}>
+              <button
+                className={d.id === selected.id ? 'active' : ''}
+                onClick={() => setSelected(d)}
+              >
                 {d.title}
               </button>
             </li>
@@ -45,19 +46,19 @@ export default function DocsHero() {
         </ul>
       </aside>
 
-      <main className="docs-content glass">
+      <main className="docs-content">
         <header className="hero-header">
-          <div className="hero-text">
+          <div>
             <h1>{selected.title}</h1>
-            <div className="doc-actions">
-              <a className="view-btn" href={`/docs_huegeo/${selected.file}`} target="_blank" rel="noreferrer">Ver documento</a>
-            </div>
+            <p>Vista previa del documento y su imagen asociada</p>
           </div>
           <img src={`/img_huegeo/${selected.image}`} alt={selected.title} />
         </header>
 
         <section className="doc-body">
-          <pre>{content}</pre>
+          <article className="markdown-body">
+            <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+          </article>
         </section>
       </main>
     </div>
