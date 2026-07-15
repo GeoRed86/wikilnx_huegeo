@@ -182,3 +182,80 @@
     border-right-color: var(--border);
   }
 }
+
+/* DocsHero styles */
+.docs-hero {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 28px;
+  padding: 28px;
+  align-items: start;
+  max-width: 1200px;
+  margin: 20px auto;
+}
+.docs-list {
+  padding-right: 12px;
+}
+.docs-list h3 { margin-top: 0; color: var(--text-h); }
+.docs-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 12px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.docs-list button {
+  width: 100%;
+  text-align: left;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: transparent;
+  border: 1px solid transparent;
+  color: var(--text-h);
+}
+.docs-list button:hover { box-shadow: var(--shadow); transform: translateY(-2px); }
+.docs-list button.active {
+  background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-color: rgba(255,255,255,0.06);
+}
+.docs-content { text-align: left; padding: 16px; border-radius: 12px; }
+.docs-hero .glass { padding: 18px; }
+.hero-header {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.hero-header img {
+  max-height: 240px;
+  width: auto;
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  object-fit: cover;
+}
+.hero-text h1 { margin: 0 0 8px; color: var(--text-h); }
+.doc-actions { margin-top: 6px; }
+.view-btn {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: var(--text-h);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.05);
+}
+.doc-body {
+  margin-top: 18px;
+  padding: 18px;
+  background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0.01));
+  border-radius: 10px;
+}
+.doc-body pre { margin: 0; white-space: pre-wrap; word-break: break-word; color: var(--text); }
+
+@media (max-width: 900px) {
+  .docs-hero { grid-template-columns: 1fr; padding: 18px; }
+  .docs-list { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  .hero-header { flex-direction: column-reverse; gap: 12px; }
+  .hero-header img { max-height: 160px; width: 100%; }
+}
