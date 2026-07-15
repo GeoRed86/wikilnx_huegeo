@@ -1,0 +1,30 @@
+# Wiki Linux Server - Administración de Sistemas Operativos
+
+## Información del Estudiante
+* **Nombre:** Geovanni Huerta
+* **Asignatura:** T13V35 Sistemas Operativos
+* **Docente:** Rubén Schnettler Lucero
+* **Institución:** INACAP Valparaíso
+
+---
+
+## Objetivo del Laboratorio
+El objetivo de este proyecto es montar, configurar y administrar un servidor Linux (Ubuntu Server 24.04 LTS) de manera local y completamente mediante la línea de comandos (CLI). Adicionalmente, se documenta todo el proceso técnico en esta Wiki interactiva desarrollada en React y Vite, la cual es servida localmente desde el propio servidor mediante Nginx y desplegada globalmente en Vercel.
+
+## Topología del Entorno
+El laboratorio se compone de una sola máquina virtual conectada a través de un esquema de red NAT con reenvío de puertos hacia la máquina anfitriona (PC local):
+
+```text
+TU PC (Anfitrión)
+   │
+   ├── navegador Web (http://localhost:8080) ──► [ Reenvío de Puerto 8080:80 ] ──► Nginx (Puerto 80)
+   └── terminal SSH (ssh -p 2222) ───────────► [ Reenvío de Puerto 2222:22 ] ──► OpenSSH (Puerto 22)
+```  
+
+<div align="center">
+    
+<img src="../img_huegeo/01_config_red_nat.png.png" alt="configuracion VM" width="80%">
+
+<p>En la Imagen se puede ver la configuración que necesitaremos en este caso, desde la cantidad de RAM asignada y la ROM, y tambien la configurackion de las redes que usaremos</p>
+
+</div>
