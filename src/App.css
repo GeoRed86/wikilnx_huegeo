@@ -186,14 +186,16 @@
 /* DocsHero styles */
 .docs-hero {
   display: grid;
-  grid-template-columns: 220px 1fr;
-  gap: 24px;
-  padding: 28px;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  padding: 32px;
   align-items: start;
 }
 .docs-list {
-  border-right: 1px solid var(--border);
   padding-right: 16px;
+  align-self: start;
+  position: sticky;
+  top: 24px;
 }
 .docs-list h3 {
   margin-top: 0;
@@ -230,9 +232,11 @@
   justify-content: space-between;
 }
 .hero-header img {
-  max-height: 96px;
-  border-radius: 8px;
+  max-height: 320px;
+  border-radius: 10px;
   box-shadow: var(--shadow);
+  width: 48%;
+  object-fit: cover;
 }
 .doc-body {
   margin-top: 18px;
@@ -264,8 +268,9 @@
 .markdown-body ul, .markdown-body ol { margin: 0 0 12px 20px; }
 
 @media (max-width: 900px) {
-  .docs-hero { grid-template-columns: 1fr; }
-  .docs-list { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 16px; }
+  .docs-hero { grid-template-columns: 1fr; padding: 18px; }
+  .docs-list { border-right: none; border-bottom: 1px solid var(--border); padding-bottom: 16px; position: static; top: auto; }
+  .hero-header img { max-height: 180px; width: 100%; }
 }
 
 /* App header */
